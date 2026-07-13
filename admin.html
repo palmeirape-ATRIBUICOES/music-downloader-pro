@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Music Downloader PRO</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Admin-specific styles to keep dashboard modular */
+        .admin-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 24px;
+        }
+
+        .login-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .login-card h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .login-card h2 span {
+            color: var(--primary);
+        }
+
+        .login-card p {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .input-group input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: var(--font);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 200, 0, 0.25);
+        }
+
+        .error-message {
+            color: #ff3b30;
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Dashboard specific layout */
+        .dashboard-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 36px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        .dashboard-title h1 {
+            font-size: 32px;
+            text-transform: uppercase;
+        }
+
+        .dashboard-title h1 span {
+            color: var(--primary);
+        }
+
+        .dashboard-title p {
+            font-size: 14px;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--border-color);
+        }
+
+        .stat-card.primary::before {
+            background: var(--primary);
+        }
+
+        .stat-card.gold::before {
+            background: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .stat-value span {
+            color: var(--primary);
+        }
+
+        .active-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: inline-block;
+            box-shadow: 0 0 10px var(--primary);
+            animation: pulseGlow 1.5s infinite alternate;
+        }
+
+        /* Sessions Table */
+        .table-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        .table-title {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 14px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            padding: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        /* Shake animation for input */
+        .shake {
+            animation: shakeInput 0.4s ease;
+        }
+
+        @keyframes shakeInput {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+    </style>
+</head>
+<body style="background-image: radial-gradient(circle at 10% 20%, rgba(0, 200, 0, 0.03) 0%, transparent 40%);">
+
+    <div class="admin-wrapper">
+        <!-- 1. Admin Login Form -->
+        <section class="login-card" id="admin-login-section">
+            <a href="index.html" style="display: inline-block; margin-bottom: 20px;">
+                <img src="IMAGENS/logo.png" alt="Logo" style="height: 50px;">
+            </a>
+            <h2>Acesso <span>Admin</span></h2>
+            <p>Insira a senha mestra para visualizar as estatísticas de visitas da página de vendas.</p>
+            
+            <div class="error-message" id="admin-login-error"></div>
+            
+            <div class="input-group">
+                <label for="admin-password">Senha de Acesso</label>
+                <input type="password" id="admin-password" placeholder="Digite a senha..." autofocus>
+            </div>
+            
+            <button class="btn btn-primary" id="admin-login-btn" style="width: 100%">Entrar no Painel</button>
+        </section>
+
+        <!-- 2. Admin Dashboard Panel (Visible only when logged in) -->
+        <section class="dashboard-container" id="admin-dashboard-section" style="display: none;">
+            <div class="dashboard-header">
+                <div class="dashboard-title">
+                    <a href="index.html" style="display: inline-block; margin-bottom: 10px;">
+                        <img src="IMAGENS/logo.png" alt="Logo" style="height: 40px;">
+                    </a>
+                    <h1>Painel de <span>Estatísticas</span></h1>
+                    <p>Métricas de acesso e engajamento da página de vendas.</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-secondary" id="admin-reset-btn">Zerar Dados</button>
+                    <button class="btn btn-primary" id="admin-logout-btn">Sair</button>
+                </div>
+            </div>
+
+            <!-- Stats grid indicators -->
+            <div class="stats-grid">
+                <!-- Stat 1 -->
+                <div class="stat-card primary">
+                    <span class="stat-label">Total de Visitas</span>
+                    <span class="stat-value" id="stat-total-visits">0</span>
+                    <p style="font-size: 12px; color: var(--text-muted)">Visualizações únicas calculadas</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="stat-card gold">
+                    <span class="stat-label">Tempo Total Acumulado</span>
+                    <span class="stat-value" id="stat-total-time">0s</span>
+                    <p style="font-size: 12px; color: var(--text-muted)">Tempo total de clientes na página</p>
+                </div>
+                <!-- Stat 3 -->
+                <div class="stat-card">
+                    <span class="stat-label">Tempo Médio na Página</span>
+                    <span class="stat-value" id="stat-avg-time">0s</span>
+                    <p style="font-size: 12px; color: var(--text-muted)">Média de retenção por cliente</p>
+                </div>
+                <!-- Stat 4 -->
+                <div class="stat-card primary">
+                    <span class="stat-label">
+                        <span class="active-dot"></span>
+                        Clientes Online Agora
+                    </span>
+                    <span class="stat-value" id="stat-active-users">0</span>
+                    <p style="font-size: 12px; color: var(--text-muted)">Sessões ativas nos últimos 15s</p>
+                </div>
+            </div>
+
+            <!-- Recent log table -->
+            <div class="table-card">
+                <div class="table-title">Últimas Visitas Registradas</div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Data / Hora</th>
+                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">ID do Cliente</th>
+                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Páginas Acessadas</th>
+                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Tempo na Página</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sessions-table-body">
+                            <!-- Injected dynamically via script.js -->
+                            <tr>
+                                <td colspan="4" style="text-align:center; color: var(--text-muted); padding: 20px;">Carregando dados de tráfego...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

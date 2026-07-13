@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Downloader PRO - Baixe Músicas no PC de Forma Fácil e Rápida</title>
+    <meta name="description" content="Baixe suas playlists favoritas com facilidade, organize seus arquivos e tenha suas músicas sempre à mão no computador com o Music Downloader PRO.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo-container" id="header-logo-link">
+                <img src="IMAGENS/logo.png" alt="Music Downloader PRO Logo" class="logo-img">
+                <span class="logo-text">Music Downloader <span>PRO</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#beneficios" id="nav-link-benefits">Benefícios</a></li>
+                <li><a href="#demonstracao" id="nav-link-demo">Demonstração</a></li>
+                <li><a href="#faq" id="nav-link-faq">Perguntas Frequentes</a></li>
+            </ul>
+            <a href="#adquirir" class="btn btn-primary pulse" id="header-cta-btn">Adquirir Agora</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge-wrapper">
+                <div class="badge badge-gold">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Acesso Imediato &amp; Vitalício
+                </div>
+            </div>
+            <h1>Baixe Músicas no PC <br><span>Fácil e Rápido</span></h1>
+            <p class="subtitle">Suas playlists favoritas em <span>poucos cliques</span>. Prático, rápido e totalmente organizado para o seu computador.</p>
+            
+            <div class="cta-group">
+                <a href="#adquirir" class="btn btn-primary pulse" id="hero-main-cta">
+                    Quero Acesso Imediato
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <p class="cta-subtitle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Download 100% Seguro. Compra Garantida.
+                </p>
+            </div>
+
+            <!-- Video Player Component -->
+            <div class="video-wrapper" id="sales-video-container">
+                <div class="video-placeholder" id="play-video-trigger">
+                    <img src="IMAGENS/1.png" alt="Preview da Interface do Music Downloader PRO" class="video-thumbnail">
+                    <div class="play-trigger">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-overlay-text">Assista ao vídeo e veja o <span>funcionamento</span></div>
+                </div>
+                <!-- Video player (will be dynamic via JS or directly played if there was a source) -->
+                <video id="sales-video" style="display:none; width:100%; height:100%; object-fit: cover;" controls>
+                    <source src="chamada.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <section class="features-bar" id="beneficios">
+        <div class="container">
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-item-bar">
+                    <div class="feature-bar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="feature-bar-content">
+                        <h3>Download Rápido</h3>
+                        <p>Salve suas músicas favoritas em poucos passos, sem complicações.</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-item-bar">
+                    <div class="feature-bar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                            <polygon points="12 11 12 17 17 14"></polygon>
+                        </svg>
+                    </div>
+                    <div class="feature-bar-content">
+                        <h3>Playlists Organizadas</h3>
+                        <p>Tenha todas as suas pastas e coleções arrumadas no seu computador.</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-item-bar">
+                    <div class="feature-bar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="feature-bar-content">
+                        <h3>Uso Imediato</h3>
+                        <p>Comece a utilizar o software logo após fazer a instalação simples.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="showcase" id="demonstracao">
+        <div class="container">
+            <div class="showcase-grid">
+                <div class="showcase-image-wrapper">
+                    <img src="IMAGENS/1.png" alt="Interface Completa do Music Downloader PRO rodando no Laptop" class="showcase-img">
+                </div>
+                <div class="showcase-content">
+                    <h2>Tenha suas músicas favoritas <span>sempre à mão!</span></h2>
+                    <p class="description">Esqueça downloads complicados, conversores online lentos ou popups cheios de vírus. O <strong>Music Downloader PRO</strong> foi desenvolvido para trazer praticidade direta para a sua área de trabalho. Gerencie seus downloads de forma integrada, busque seus artistas favoritos e organize playlists com apenas alguns cliques.</p>
+                    <a href="#adquirir" class="btn btn-secondary" id="showcase-cta-btn">Ver Planos de Acesso</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiator Section -->
+    <section class="differentiator-section" id="diferencial">
+        <div class="container">
+            <div class="differentiator-card">
+                <div class="diff-badge">O Grande Diferencial</div>
+                <h2>Baixe tudo com apenas <span>1 Clique!</span></h2>
+                <p>Chega de baixar música por música manualmente. Nossa tecnologia inteligente dá a você total liberdade para escolher a escala dos seus downloads de forma instantânea:</p>
+                <div class="diff-options-grid">
+                    <div class="diff-option-item">
+                        <h4>1 Música</h4>
+                        <p>Baixe qualquer faixa individual direto no seu computador em alta qualidade.</p>
+                    </div>
+                    <div class="diff-option-item">
+                        <h4>1 Álbum</h4>
+                        <p>Baixe álbuns oficiais completos de uma vez só, com as faixas já renomeadas.</p>
+                    </div>
+                    <div class="diff-option-item">
+                        <h4>Toda a Discografia</h4>
+                        <p>Com apenas um clique, salve todos os álbuns lançados pelo artista escolhido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases-section" id="utilidades">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como você pode <span>lucrar e aproveitar</span></h2>
+                <p>Descubra as principais utilidades que fazem do Music Downloader PRO um investimento extremamente lucrativo e prático.</p>
+            </div>
+            <div class="use-cases-grid">
+                <!-- Case 1 -->
+                <div class="use-case-card">
+                    <div class="use-case-icon use-case-icon-gold">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Revenda de Pendrives</h3>
+                    <p>Crie pastas com seleções musicais temáticas (Modão, Piseiro, Anos 80, Funk, etc.) e venda pendrives cheios para comércios, taxistas ou conhecidos. Uma excelente fonte de renda extra com esforço zero!</p>
+                    <ul class="use-case-list use-case-list-gold">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Alta lucratividade por pendrive
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Músicas organizadas e limpas
+                        </li>
+                    </ul>
+                </div>
+                <!-- Case 2 -->
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
+                            <circle cx="7" cy="17" r="2"></circle>
+                            <circle cx="17" cy="17" r="2"></circle>
+                        </svg>
+                    </div>
+                    <h3>Colocar no Carro</h3>
+                    <p>Prepare o seu pendrive ou cartão de memória com suas faixas preferidas e leve o som ideal para o rádio do seu veículo. Dirija curtindo as melhores batidas sem sofrer com oscilações de internet ou sinal de 3G/4G.</p>
+                    <ul class="use-case-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Zero anúncios ou interrupções
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Funciona 100% offline no som
+                        </li>
+                    </ul>
+                </div>
+                <!-- Case 3 -->
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                            <path d="M9 18V5l12-2v13"></path>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <circle cx="18" cy="16" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3>Músicas para Festas</h3>
+                    <p>Organize churrascos, festas de aniversário, confraternizações e eventos familiares com as melhores músicas. Baixe a trilha sonora completa com antecedência e garanta a diversão de todos sem depender de conexões instáveis.</p>
+                    <ul class="use-case-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Selecione estilos para cada momento
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Evite travamentos ou bufferings
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checklist section -->
+    <section class="features-checklist">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recursos e <span>Diferenciais</span></h2>
+                <p>Tudo o que você precisa para uma experiência de áudio completa e profissional no seu computador.</p>
+            </div>
+            
+            <div class="checklist-grid">
+                <!-- Card 1 -->
+                <div class="checklist-card">
+                    <h3>Fácil de Usar <span>Praticidade</span></h3>
+                    <ul class="checklist-list">
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Baixe músicas com facilidade
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Organize playlists no computador
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Interface simples e moderna
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Uso rápido e prático
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Ideal para quem ama música
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="checklist-card checklist-card-right">
+                    <h3>Instalação Simples <span>Para PC</span></h3>
+                    <ul class="checklist-list">
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Interface intuitiva e amigável
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Downloads de alta velocidade
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Organização estruturada por playlists
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Suporte e atualizações constantes
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                            Compatível com Windows 10 e 11
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Box / Call to Action Section -->
+    <section class="cta-section" id="adquirir">
+        <div class="container">
+            <div class="cta-box">
+                <div class="seal-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Melhor Custo Benefício
+                </div>
+                <h2>Tenha Acesso <span>Completo Hoje</span></h2>
+                <p>Receba a versão mais recente do Music Downloader PRO e comece a baixar suas músicas favoritas agora mesmo.</p>
+                
+                <div class="pricing-container">
+                    <span class="original-price">De R$ 97,00</span>
+                    <span class="promo-price">R$ 29,90 <span>/ pagamento único</span></span>
+                </div>
+
+                <a href="obrigado.html" class="btn btn-gold btn-large pulse" id="buy-cta-btn">
+                    Quero Acesso Imediato
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perguntas <span>Frequentes</span></h2>
+                <p>Tire suas principais dúvidas sobre o funcionamento do Music Downloader PRO.</p>
+            </div>
+            
+            <div class="faq-list">
+                <!-- FAQ 1 -->
+                <div class="faq-item" id="faq-1">
+                    <button class="faq-question" id="faq-q-1">
+                        O que é o Music Downloader PRO?
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            O Music Downloader PRO é um aplicativo para PC que facilita o download e a organização de músicas e playlists diretamente na sua máquina de forma intuitiva, limpa e prática.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item" id="faq-2">
+                    <button class="faq-question" id="faq-q-2">
+                        Como eu recebo o arquivo após a compra?
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Assim que a sua compra for confirmada, você será direcionado para a página de Obrigado. Lá você encontrará um botão para baixar o arquivo completo compactado (ZIP) contendo o instalador.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item" id="faq-3">
+                    <button class="faq-question" id="faq-q-3">
+                        O aplicativo funciona em qual sistema operacional?
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            O programa é otimizado para o sistema operacional Windows, com suporte completo para as versões do Windows 10 e do Windows 11.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="faq-item" id="faq-4">
+                    <button class="faq-question" id="faq-q-4">
+                        Eu preciso pagar mensalidades?
+                        <span class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Não! O pagamento é único e vitalício. Você terá acesso total à versão atual e futuras atualizações compatíveis sem cobranças recorrentes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="logo-container" style="display:inline-flex" id="footer-logo-link">
+                <img src="IMAGENS/logo.png" alt="Music Downloader PRO Logo" class="logo-img">
+                <span class="logo-text">Music Downloader <span>PRO</span></span>
+            </a>
+            <p>Seus artistas favoritos na velocidade de um clique.</p>
+            <div class="footer-links">
+                <a href="#beneficios" id="footer-link-benefits">Benefícios</a>
+                <a href="#demonstracao" id="footer-link-demo">Demonstração</a>
+                <a href="#faq" id="footer-link-faq">FAQ</a>
+            </div>
+            <p style="font-size:12px; opacity:0.6">&copy; 2026 Music Downloader PRO. Todos os direitos reservados. Projeto Windows Deemix.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
