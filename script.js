@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 4. Analytics Tracking System (localStorage-based)
-    const isLoginPageOrAdmin = window.location.pathname.includes('admin.html');
+    const isLoginPageOrAdmin = window.location.pathname.toLowerCase().includes('admin');
     
     // Only track if it's not the admin page itself (to avoid polluting stats)
     if (!isLoginPageOrAdmin) {
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         
         const handleLogin = () => {
-            if (passwordInput && passwordInput.value === correctPassword) {
+            if (passwordInput && passwordInput.value.trim() === correctPassword) {
                 sessionStorage.setItem('mdpro_admin_logged', 'true');
                 if (loginError) loginError.style.display = 'none';
                 passwordInput.value = '';
