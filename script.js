@@ -186,7 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 startTime: Date.now(),
                 endTime: Date.now(),
                 durationSeconds: 0,
-                pagesVisited: [currentPage]
+                pagesVisited: [currentPage],
+                ip: 'Obtendo IP...'
             };
             
             sessions.push(newSession);
@@ -201,6 +202,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+        
+        // Fetch IP address from public API to track unique visits by IP
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const userIp = data.ip || 'IP Desconhecido';
+                
+                // Track unique IPs
+                let uniqueIps = JSON.parse(localStorage.getItem('mdpro_unique_ips') || '[]');
+                if (!uniqueIps.includes(userIp) && userIp !== 'IP Desconhecido') {
+                    uniqueIps.push(userIp);
+                    localStorage.setItem('mdpro_unique_ips', JSON.stringify(uniqueIps));
+                }
+                
+                // Attach IP to active session in sessions list
+                let currentSessions = JSON.parse(localStorage.getItem('mdpro_sessions') || '[]');
+                const activeSess = currentSessions.find(s => s.id === activeSessionId);
+                if (activeSess) {
+                    activeSess.ip = userIp;
+                    localStorage.setItem('mdpro_sessions', JSON.stringify(currentSessions));
+                }
+            })
+            .catch(err => {
+                console.error("Erro ao obter IP:", err);
+            });
         
         // Heartbeat timer to track active time on page (runs every second)
         setInterval(() => {
@@ -265,6 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadDashboardData = () => {
             const totalVisits = localStorage.getItem('mdpro_total_visits') || '0';
             const sessions = JSON.parse(localStorage.getItem('mdpro_sessions') || '[]');
+            const uniqueIpsList = JSON.parse(localStorage.getItem('mdpro_unique_ips') || '[]');
+            const totalUniqueIps = uniqueIpsList.length;
             
             // Calculate total time & average time
             let totalSeconds = 0;
@@ -280,11 +308,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Update counts in DOM
             const visitsEl = document.getElementById('stat-total-visits');
+            const uniqueIpsEl = document.getElementById('stat-unique-ips');
             const totalTimeEl = document.getElementById('stat-total-time');
             const avgTimeEl = document.getElementById('stat-avg-time');
             const activeUsersEl = document.getElementById('stat-active-users');
             
             if (visitsEl) visitsEl.innerText = totalVisits;
+            if (uniqueIpsEl) uniqueIpsEl.innerText = totalUniqueIps.toString();
             if (totalTimeEl) totalTimeEl.innerText = formatDuration(totalSeconds);
             if (avgTimeEl) avgTimeEl.innerText = formatDuration(avgSeconds);
             if (activeUsersEl) activeUsersEl.innerText = activeUsersCount.toString();
@@ -301,10 +331,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     reversedSessions.forEach((s) => {
                         const dateStr = new Date(s.startTime).toLocaleString('pt-BR');
                         const pagesStr = s.pagesVisited.join(', ');
+                        const ipDisplay = s.ip || 'Carregando IP...';
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">${dateStr}</td>
-                            <td style="padding: 12px; border-bottom: 1px solid var(--border-color);"><code>${s.id.substring(5, 12)}</code></td>
+                            <td style="padding: 12px; border-bottom: 1px solid var(--border-color);"><strong>${ipDisplay}</strong> <span style="font-size:11px; opacity:0.5;">(${s.id.substring(5, 12)})</span></td>
                             <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">${pagesStr}</td>
                             <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">${formatDuration(s.durationSeconds)}</td>
                         `;
@@ -344,9 +375,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const resetBtn = document.getElementById('admin-reset-btn');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
-                if (confirm('Tem certeza que deseja zerar TODAS as estatísticas de visitas e tempo?')) {
+                if (confirm('Tem certeza que deseja zerar TODAS as estatísticas de visitas, IPs e tempo?')) {
                     localStorage.removeItem('mdpro_total_visits');
                     localStorage.removeItem('mdpro_sessions');
+                    localStorage.removeItem('mdpro_unique_ips');
                     loadDashboardData();
                 }
             });

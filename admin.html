@@ -27,11 +27,15 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             text-align: center;
             animation: fadeInUp 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
         }
 
         .login-card h2 {
             font-size: 26px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
 
@@ -40,14 +44,17 @@
         }
 
         .login-card p {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-size: 14px;
         }
 
         .input-group {
             position: relative;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
         }
 
         .input-group label {
@@ -308,21 +315,21 @@
             <div class="stats-grid">
                 <!-- Stat 1 -->
                 <div class="stat-card primary">
-                    <span class="stat-label">Total de Visitas</span>
-                    <span class="stat-value" id="stat-total-visits">0</span>
-                    <p style="font-size: 12px; color: var(--text-muted)">Visualizações únicas calculadas</p>
+                    <span class="stat-label">Visitas por IP (Únicas)</span>
+                    <span class="stat-value" id="stat-unique-ips">0</span>
+                    <p style="font-size: 12px; color: var(--text-muted)">Visitantes com IPs distintos</p>
                 </div>
                 <!-- Stat 2 -->
-                <div class="stat-card gold">
-                    <span class="stat-label">Tempo Total Acumulado</span>
-                    <span class="stat-value" id="stat-total-time">0s</span>
-                    <p style="font-size: 12px; color: var(--text-muted)">Tempo total de clientes na página</p>
+                <div class="stat-card">
+                    <span class="stat-label">Total de Visualizações</span>
+                    <span class="stat-value" id="stat-total-visits">0</span>
+                    <p style="font-size: 12px; color: var(--text-muted)">Total de cliques/páginas abertas</p>
                 </div>
                 <!-- Stat 3 -->
-                <div class="stat-card">
+                <div class="stat-card gold">
                     <span class="stat-label">Tempo Médio na Página</span>
                     <span class="stat-value" id="stat-avg-time">0s</span>
-                    <p style="font-size: 12px; color: var(--text-muted)">Média de retenção por cliente</p>
+                    <p style="font-size: 12px; color: var(--text-muted)">Tempo total: <span id="stat-total-time" style="color: var(--gold); font-weight: 600;">0s</span></p>
                 </div>
                 <!-- Stat 4 -->
                 <div class="stat-card primary">
@@ -337,15 +344,15 @@
 
             <!-- Recent log table -->
             <div class="table-card">
-                <div class="table-title">Últimas Visitas Registradas</div>
+                <div class="table-title">Histórico de Sessões por Visitante (IP e Tempo)</div>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
                                 <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Data / Hora</th>
-                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">ID do Cliente</th>
+                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Endereço IP (Visitante)</th>
                                 <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Páginas Acessadas</th>
-                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Tempo na Página</th>
+                                <th style="padding: 12px; border-bottom: 2px solid var(--border-color);">Tempo de Permanência</th>
                             </tr>
                         </thead>
                         <tbody id="sessions-table-body">
