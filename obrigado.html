@@ -6,6 +6,12 @@
     <title>Obrigado! Baixe o seu Music Downloader PRO</title>
     <meta name="description" content="Agradecemos pela sua preferência! Siga as instruções abaixo para realizar o download e instalar o Music Downloader PRO no seu computador Windows.">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Impedir que usuários acessem diretamente digitando a URL
+        if (sessionStorage.getItem('mdpro_purchased') !== 'true') {
+            window.location.replace('index.html');
+        }
+    </script>
 </head>
 <body>
 

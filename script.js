@@ -58,6 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
         '<strong>Vídeo de Instrução (Placeholder)</strong><br><br>Quando você produzir o vídeo de instrução da instalação do Deemix, adicione o arquivo de vídeo à pasta do projeto (ex: <code>tutorial.mp4</code>) e configure a tag <code>&lt;source&gt;</code> correspondente no arquivo <code>obrigado.html</code>.'
     );
 
+    // 2.5. Purchase Button Session Authorization
+    const buyCtaBtn = document.getElementById('buy-cta-btn');
+    if (buyCtaBtn) {
+        buyCtaBtn.addEventListener('click', () => {
+            sessionStorage.setItem('mdpro_purchased', 'true');
+        });
+    }
+
     // 3. Custom sleek notification modal instead of simple browser alert
     function showNoticeModal(htmlContent) {
         // Check if modal already exists
